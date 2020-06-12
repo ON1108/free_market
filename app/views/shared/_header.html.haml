@@ -1,0 +1,39 @@
+.header
+  .box 
+    .box__top
+      = link_to root_path do
+        = image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?1107552019", class:"title") 
+      = render 'shared/search_form'
+
+    -# 各ボタンは一時的にトップページに遷移するように設定
+    .box__bottom
+      %ul.left
+        %li.left-btn--category
+          = link_to root_path do
+            = fa_icon 'list',class: 'left-btn--category__icon'
+            %span カテゴリーから探す
+          .accordion
+            %ul.parent
+              = render partial: "shared/parent", collection: @parents
+
+        %li.left-btn--brand
+          = link_to root_path do
+            = fa_icon 'tag',class: 'left-btn--brand__icon'
+            %span ブランドから探す
+
+      %ul.right
+        %li.right-btn
+          = link_to root_path do
+            = fa_icon 'bell',class: 'right-btn__icon'
+            %span お知らせ
+
+        %li.right-btn
+          = link_to root_path do
+            = fa_icon 'check',class: 'right-btn__icon'
+            %span やることリスト
+
+        %li.right-btn
+          = link_to user_path(current_user) do
+            %img{src:"//static.mercdn.net/images/member_photo_noimage_thumb.png", width: 32, class:"right-btn__mypage-icon"}
+            %span マイページ
+            
